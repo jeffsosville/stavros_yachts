@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stavros Yachts | Luxury Yacht Brokerage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a1525;
+            --navy-mid: #12223d;
+            --navy-light: #1a3052;
+            --slate: #4a5568;
+            --mist: #94a3b8;
+            --silver: #e2e8f0;
+            --cream: #faf9f7;
+            --white: #ffffff;
+            --gold: #c9a962;
+            --gold-light: #d4ba7a;
+            --gold-dark: #a68a4b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--cream);
+            color: var(--slate);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--navy);
+            padding: 1.25rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(201, 169, 98, 0.2);
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--silver);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold) !important;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold) !important;
+            color: var(--navy) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(to bottom, rgba(10, 21, 37, 0.7), rgba(10, 21, 37, 0.85)),
+                        url('https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-tagline {
+            color: var(--gold);
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--silver);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--navy);
+            padding: 4rem 2rem;
+            border-bottom: 1px solid rgba(201, 169, 98, 0.15);
+        }
+
+        .stats-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            font-weight: 500;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--mist);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 400;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.75rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .section-header p {
+            color: var(--slate);
+            font-size: 1rem;
+            font-weight: 300;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            color: var(--gold-dark);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        /* Featured Listings */
+        .listings-section {
+            background: var(--white);
+        }
+
+        .listings-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .listing-card {
+            background: var(--cream);
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .listing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(10, 21, 37, 0.15);
+        }
+
+        .listing-image {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .listing-badge {
+            position: absolute;
+            top: 1.25rem;
+            left: 1.25rem;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 0.4rem 1rem;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .listing-content {
+            padding: 1.75rem;
+        }
+
+        .listing-type {
+            font-size: 0.7rem;
+            color: var(--gold-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .listing-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .listing-location {
+            color: var(--slate);
+            font-size: 0.85rem;
+            margin-bottom: 1.25rem;
+            font-weight: 300;
+        }
+
+        .listing-specs {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.25rem 0;
+            border-top: 1px solid var(--silver);
+            border-bottom: 1px solid var(--silver);
+            margin-bottom: 1.25rem;
+        }
+
+        .listing-spec {
+            font-size: 0.8rem;
+        }
+
+        .listing-spec span {
+            color: var(--mist);
+            display: block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.25rem;
+        }
+
+        .listing-spec strong {
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        .listing-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .listing-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .listing-broker {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .broker-avatar {
+            width: 38px;
+            height: 38px;
+            background: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        .broker-info {
+            text-align: right;
+        }
+
+        .broker-name {
+            font-size: 0.8rem;
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        .broker-label {
+            font-size: 0.65rem;
+            color: var(--mist);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .view-all {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .view-all a {
+            color: var(--navy);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 500;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid var(--navy);
+            transition: all 0.3s;
+        }
+
+        .view-all a:hover {
+            color: var(--gold-dark);
+            border-color: var(--gold-dark);
+        }
+
+        /* Services Section */
+        .services-section {
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1540946485063-a40da27545f8?w=1920&q=80') center/cover no-repeat;
+            opacity: 0.1;
+        }
+
+        .services-section .section-header h2 {
+            color: var(--white);
+        }
+
+        .services-section .section-header p {
+            color: var(--mist);
+        }
+
+        .services-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--gold);
+            background: rgba(201, 169, 98, 0.05);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .service-card p {
+            color: var(--mist);
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(to right, rgba(10, 21, 37, 0.92), rgba(10, 21, 37, 0.85)),
+                        url('https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=1920&q=80') center/cover no-repeat;
+            padding: 7rem 2rem;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 1.25rem;
+            font-weight: 500;
+        }
+
+        .cta-content p {
+            color: var(--silver);
+            margin-bottom: 2.5rem;
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--mist);
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(201, 169, 98, 0.15);
+        }
+
+        .footer-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            font-weight: 300;
+            max-width: 280px;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 4rem;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+            font-weight: 500;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col a {
+            color: var(--mist);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 300;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .listings-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats-inner {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+
+            .stat {
+                flex: 1 1 40%;
+            }
+
+            .listings-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-main {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">Stavros <span>Yachts</span></a>
+        <div class="nav-links">
+            <a href="#fleet">Our Fleet</a>
+            <a href="#services">Services</a>
+            <a href="#sell">Sell Your Yacht</a>
+            <a href="#contact" class="nav-cta">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-tagline">Established Yacht Brokerage</div>
+            <h1>Exceptional Vessels. Unparalleled Service.</h1>
+            <p>For over two decades, Stavros Yachts has connected discerning buyers with the world's finest motor yachts and sailing vessels. Experience brokerage as it should be.</p>
+            <div class="hero-buttons">
+                <a href="#fleet" class="btn btn-primary">View Our Fleet</a>
+                <a href="#contact" class="btn btn-outline">Schedule Consultation</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">Explore</div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="stats-section">
+        <div class="stats-inner">
+            <div class="stat">
+                <div class="stat-number">$180M+</div>
+                <div class="stat-label">In Closed Sales</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Yachts Sold</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">25</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">Global</div>
+                <div class="stat-label">Reach & Delivery</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Listings -->
+    <section class="section listings-section" id="fleet">
+        <div class="section-header">
+            <div class="section-label">Current Offerings</div>
+            <h2>Featured Yachts</h2>
+            <p>A curated selection from our exclusive portfolio of motor yachts and sailing vessels</p>
+        </div>
+
+        <div class="listings-grid">
+            <!-- Listing 1 - Azimut -->
+            <div class="listing-card">
+                <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&q=80');">
+                    <span class="listing-badge">Featured</span>
+                </div>
+                <div class="listing-content">
+                    <div class="listing-type">Motor Yacht</div>
+                    <h3 class="listing-title">2022 Azimut 72 Flybridge</h3>
+                    <div class="listing-location">Fort Lauderdale, Florida</div>
+                    <div class="listing-specs">
+                        <div class="listing-spec">
+                            <span>Length</span>
+                            <strong>74' / 22.6m</strong>
+                        </div>
+                        <div class="listing-spec">
+                            <span>Builder</span>
+                            <strong>Azimut</strong>
+                        </div>
+                        <div class="listing-spec">
+                            <span>Cabins</span>
+                            <strong>4</strong>
+                        </div>
+                    </div>
+                    <div class="listing-footer">
+                        <div class="listing-price">$3,495,000</div>
+                        <div class="listing-broker">
+                            <div class="broker-info">
+                                <div class="broker-name">Nick Stavros</div>
+                                <div class="broker-label">Principal Broker</div>
+                            </div>
+                            <div class="broker-avatar">NS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listing 2 - Sunseeker -->
+            <div class="listing-card">
+                <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=800&q=80');">
+                    <span class="listing-badge">New Listing</span>
+                </div>
+                <div class="listing-content">
+                    <div class="listing-type">Motor Yacht</div>
+                    <h3 class="listing-title">2021 Sunseeker 86 Yacht</h3>
+                    <div class="listing-location">Monaco</div>
+                    <div class="listing-specs">
+                        <div class="listing-spec">
+                            <span>Length</span>
+                            <strong>86' / 26.2m</strong>
+                        </div>
+                        <div class="listing-spec">
+                            <span>Builder</span>
+                            <strong>Sunseeker</strong>
+                        </div>
+                        <div class="listing-spec">
+                            <span>Cabins</span>
+                            <strong>4</strong>
+                        </div>
+                    </div>
+                    <div class="listing-footer">
+                        <div class="listing-price">$4,850,000</div>
+                        <div class="listing-broker">
+                            <div class="broker-info">
+                                <div class="broker-name">Nick Stavros</div>
+                                <div class="broker-label">Principal Broker</div>
+                            </div>
+                            <div class="broker-avatar">NS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listing 3 - Viking -->
+            <div class="listing-card">
+                <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80');">
+                </div>
+                <div class="listing-content">
+                    <div class="listing-type">Sport Fishing</div>
+                    <h3 class="listing-title">2023 Viking 68 Convertible</h3>
+                    <div class="listing-location">Palm Beach, Florida</div>
+                    <div class="listing-specs">
+                        <div class="listing-spec">
+                            <span>Length</span>
+                            <strong>68' / 20.7m</strong>
+                        </div>
+                        <div class="listing-spec">
+                            <span>Builder</span>
+                            <strong>Viking</strong>
+                        </div>
+                        <div class="listing-spec">
+                            <span>Hours</span>
+                            <strong>185</strong>
+                        </div>
+                    </div>
+                    <div class="listing-footer">
+                        <div class="listing-price">$5,200,000</div>
+                        <div class="listing-broker">
+                            <div class="broker-info">
+                                <div class="broker-name">Nick Stavros</div>
+                                <div class="broker-label">Principal Broker</div>
+                            </div>
+                            <div class="broker-avatar">NS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listing 4 - Oyster -->
+            <div class="listing-card">
+                <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1540946485063-a40da27545f8?w=800&q=80');">
+                </div>
+                <div class="listing-content">
+                    <div class="listing-type">Sailing Yacht</div>
+                    <h3 class="listing-title">2020 Oyster 565</h3>
+                    <div class="listing-location">Newport, Rhode Island</div>
+                    <div class="listing-specs">
+                        <div class="listing-spec">
+                            <span>Length</span>
+                            <strong>56' / 17.1m</strong>
+                        </div>
+                        <div class="listing-spec">
+                            <span>Builder</span>
+                            <strong>Oyster</strong>
+                        </div>
+                        <div class="listing-spec">
+                            <span>Cabins</span>
+                            <strong>3</strong>
+                        </div>
+                    </div>
+                    <div class="listing-footer">
+                        <div class="listing-price">$1,895,000</div>
+                        <div class="listing-broker">
+                            <div class="broker-info">
+                                <div class="broker-name">Nick Stavros</div>
+                                <div class="broker-label">Principal Broker</div>
+                            </div>
+                            <div class="broker-avatar">NS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listing 5 - Princess -->
+            <div class="listing-card">
+                <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1559825481-12a05cc00344?w=800&q=80');">
+                    <span class="listing-badge">Price Reduced</span>
+                </div>
+                <div class="listing-content">
+                    <div class="listing-type">Motor Yacht</div>
+                    <h3 class="listing-title">2019 Princess Y78</h3>
+                    <div class="listing-location">Miami Beach, Florida</div>
+                    <div class="listing-specs">
+                        <div class="listing-spec">
+                            <span>Length</span>
+                            <strong>78' / 23.8m</strong>
+                        </div>
+                        <div class="listing-spec">
+                            <span>Builder</span>
+                            <strong>Princess</strong>
+                        </div>
+                        <div class="listing-spec">
+                            <span>Cabins</span>
+                            <strong>4</strong>
+                        </div>
+                    </div>
+                    <div class="listing-footer">
+                        <div class="listing-price">$3,750,000</div>
+                        <div class="listing-broker">
+                            <div class="broker-info">
+                                <div class="broker-name">Nick Stavros</div>
+                                <div class="broker-label">Principal Broker</div>
+                            </div>
+                            <div class="broker-avatar">NS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listing 6 - Lagoon -->
+            <div class="listing-card">
+                <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1500930287596-c1ecaa373bb2?w=800&q=80');">
+                </div>
+                <div class="listing-content">
+                    <div class="listing-type">Catamaran</div>
+                    <h3 class="listing-title">2022 Lagoon Sixty 5</h3>
+                    <div class="listing-location">Annapolis, Maryland</div>
+                    <div class="listing-specs">
+                        <div class="listing-spec">
+                            <span>Length</span>
+                            <strong>65' / 19.8m</strong>
+                        </div>
+                        <div class="listing-spec">
+                            <span>Builder</span>
+                            <strong>Lagoon</strong>
+                        </div>
+                        <div class="listing-spec">
+                            <span>Cabins</span>
+                            <strong>5</strong>
+                        </div>
+                    </div>
+                    <div class="listing-footer">
+                        <div class="listing-price">$2,450,000</div>
+                        <div class="listing-broker">
+                            <div class="broker-info">
+                                <div class="broker-name">Nick Stavros</div>
+                                <div class="broker-label">Principal Broker</div>
+                            </div>
+                            <div class="broker-avatar">NS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="view-all">
+            <a href="#">View All Available Yachts</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services-section" id="services">
+        <div class="section-header">
+            <div class="section-label" style="color: var(--gold);">What We Offer</div>
+            <h2>Full-Service Brokerage</h2>
+            <p>From acquisition to delivery, we handle every detail with the utmost care and professionalism</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon" style="color: var(--gold);">◇</span>
+                <h3>Yacht Acquisition</h3>
+                <p>We identify vessels that match your exact specifications, negotiate on your behalf, and guide you through every step of the purchase.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon" style="color: var(--gold);">◇</span>
+                <h3>Sales & Marketing</h3>
+                <p>Strategic positioning and global exposure for your vessel, leveraging our network of qualified buyers and industry connections.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon" style="color: var(--gold);">◇</span>
+                <h3>Survey & Closing</h3>
+                <p>We coordinate marine surveys, sea trials, documentation, registration, and delivery logistics for a seamless transaction.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="sell">
+        <div class="cta-content">
+            <div class="section-label" style="color: var(--gold);">Considering Selling?</div>
+            <h2>Your Yacht Deserves the Right Representation</h2>
+            <p>Request a confidential market analysis and discover how Stavros Yachts can position your vessel for a successful sale.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Request Valuation</a>
+                <a href="#" class="btn btn-outline">Speak With Nick</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="#" class="logo">Stavros <span>Yachts</span></a>
+                <p>Dedicated to connecting discerning clients with exceptional yachts through personalized service and decades of maritime expertise.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#fleet">Our Fleet</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#sell">Sell Your Yacht</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">info@stavrosyachts.com</a></li>
+                        <li><a href="#">+1 (954) 555-0123</a></li>
+                        <li><a href="#">Fort Lauderdale, FL</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2025 Stavros Yachts. All rights reserved.</div>
+            <div>Member: IYBA | FYBA | MYBA</div>
+        </div>
+    </footer>
+</body>
+</html>
